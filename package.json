@@ -10,6 +10,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },
+  "homepage": "https://Griffin-chem.github.io/goit-react-hw-02-feedback",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -30,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   }
 }
