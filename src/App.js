@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0
+  };
+
+  handleClick = (e) => {
+    const newState = {[e.target.name]: this.state[e.target.name] + 1}
+    this.setState(newState);
+  };
+
+  render () { 
+    return (
+      <div>
+        <button name="good" onClick={this.handleClick}>Good</button>
+        <button name="neutral" onClick={this.handleClick}>Neutral</button>
+        <button name="bad" onClick={this.handleClick}>Bad</button>
+        <p>Good: {this.state.good}</p>
+        <p>Neutral: {this.state.neutral}</p>
+        <p>Bad: {this.state.bad}</p>
+      </div>
+    );
+  }
 }
 
 export default App;
