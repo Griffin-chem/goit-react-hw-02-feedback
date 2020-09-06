@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
+import Feedback from './components/Feedback/Feedback';
+import Statistic from './components/Statistic/Statistic';
+import Notification from './components/Notification/Notification';
+
 import './App.css';
+import Section from './components/Section/Section';
 
 class App extends Component {
   
@@ -19,27 +24,24 @@ class App extends Component {
   }
 
   handleClick = (e) => {
-    const newState = {[e.target.name]: this.state[e.target.name] + 1}
+    e.preventDefault();
+    const newState = {[e.target.name]: this.state[e.target.name] + 1};
     this.setState(newState);
-  };
+  };  
 
   render () { 
     return (
       <div>
-        <section>
-          <p>Please, leave feedback</p>
-          <button name="good" onClick={this.handleClick}>Good</button>
-          <button name="neutral" onClick={this.handleClick}>Neutral</button>
-          <button name="bad" onClick={this.handleClick}>Bad</button>
-        </section>
-        <section>
+        <Section title="Please, leave feedback" children={Feedback(Object.keys(this.state), this.handleClick)}></Section>
+        <Section title="Statistic" children={
+          (this.countTotalFeedback() === 0)
+          ? Notification("No feedback provided yet!")
+          : Statistic(this.state, this.countTotalFeedback(), this.countPositiveFeedbackPercentage())}></Section>
+        {/* <section>
           <p>Statistic</p>
-          <p>Good: {this.state.good}</p>
-          <p>Neutral: {this.state.neutral}</p>
-          <p>Bad: {this.state.bad}</p>
-          <p>Total: {this.countTotalFeedback()}</p>
-          <p>Positive Feedback: {this.countPositiveFeedbackPercentage()}%</p>
-        </section>
+          <Statistic options={this.state} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()}>
+          </Statistic>
+        </section> */}
       </div>
     );
   }
