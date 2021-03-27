@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import {Title} from './styledSection';
+import { Title } from "./styledSection";
 
-const Section = ({title, children}) => {
+const Section = ({ title, children }) => {
   return (
     <section>
       <Title>{title}</Title>
       {children}
     </section>
-  )
-}
+  );
+};
 
 export default Section;

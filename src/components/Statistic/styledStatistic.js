@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Stat = styled.p`
   font-size: 14px;
@@ -7,4 +7,4 @@ const Stat = styled.p`
   text-transform: capitalize;
 `;
 
-export {Stat};
+export { Stat };
